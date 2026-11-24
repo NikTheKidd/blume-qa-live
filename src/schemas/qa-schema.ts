@@ -40,3 +40,17 @@ export const votesSchema: CollectionSchema = {
     admin: { read: true, create: true, update: true, delete: true },
   },
 }
+
+export const moderationSchema: CollectionSchema = {
+  name: 'moderation',
+  columns: [
+    { name: 'questionId', storage: 'text', interpretation: 'plain' },
+    { name: 'roomCode', storage: 'text', interpretation: 'plain' },
+    { name: 'action', storage: 'text', interpretation: 'plain' },
+  ],
+  permissions: {
+    viewer: { read: true, create: false, update: false, delete: false },
+    member: { read: true, create: true, update: false, delete: 'own' },
+    admin: { read: true, create: true, update: true, delete: true },
+  },
+}
